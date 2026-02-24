@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://hub.ashell.dev/schemas/policy/v1.json
+
+schema_version: 1
+publish:
+  name: ash/golang-dev
+  version: 0.0.1
+  description: Policy for Go development
+  authors:
+  - Ash Team <team@ashell.dev>
+  license: MIT
+files:
+  rules:
+  - path: /private/tmp/**
+  - path: ~/go/**
+network:
+  rules:
+  - host: go.dev
+  - host: pkg.go.dev
+  - host: '**.golang.org'
+  - host: proxy.golang.org
+  - host: sum.golang.org
+exec:
+  rules:
+  - path: go
+  - path: gofmt
+  - path: gopls

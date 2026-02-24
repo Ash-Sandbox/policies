@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://hub.ashell.dev/schemas/policy/v1.json
+
+schema_version: 1
+publish:
+  name: ash/js-dev
+  version: 0.0.1
+  description: Policy for Node.js development
+  authors:
+    - Ash Team <team@ashell.dev>
+  license: MIT
+files:
+  rules:
+    - path: /private/tmp/**
+    - path: /tmp/**
+    - path: ~/.npm/**
+    - path: ~/.nvm/**
+network:
+  rules:
+    - host: "**.npmjs.com"
+    - host: "**.npmjs.org"
+    - host: registry.npmjs.org
+exec:
+  rules:
+    - path: ./node_modules/@esbuild/**/esbuild
+    - path: ./node_modules/esbuild/**/esbuild
+    - path: /opt/homebrew/bin/node
+    - path: /opt/homebrew/bin/npm
+    - path: /opt/homebrew/bin/npx

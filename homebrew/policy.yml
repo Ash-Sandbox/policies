@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://hub.ashell.dev/schemas/policy/v1.json
+
+schema_version: 1
+publish:
+  name: ash/homebrew
+  version: 0.0.1
+  description: Policy for the Homebrew package manager
+  authors:
+  - Ash Team <team@ashell.dev>
+  license: MIT
+dependencies:
+  ash/base-macos: ^0
+files:
+  rules:
+  - path: /Library/Apple/System/Library/Receipts/**
+    operations:
+    - read
+  - path: /Library/Fonts
+    operations:
+    - read
+  - path: /opt/homebrew/**
+  - path: /private/var/log/asl
+    operations:
+    - read
+  - path: ~/Library/Fonts
+    operations:
+    - read
+  - path: ~/Library/Logs/Homebrew/**
+network:
+  rules:
+  - host: ghcr.io
+    ports:
+    - 443
+  - host: eu-central-1-1.aws.cloud2.influxdata.com
+    ports:
+    - 443
+exec:
+  rules:
+  - path: /opt/homebrew/Library/Homebrew/vendor/portable-ruby/*/bin/ruby
+  - path: /opt/homebrew/bin/brew

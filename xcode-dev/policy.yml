@@ -1,0 +1,70 @@
+# yaml-language-server: $schema=https://hub.ashell.dev/schemas/policy/v1.json
+
+schema_version: 1
+publish:
+  name: ash/xcode-dev
+  version: 0.0.1
+  description: Policy for software development with Xcode
+  authors:
+  - Ash Team <team@ashell.dev>
+  license: MIT
+dependencies:
+  ash/base-macos: ^0
+files:
+  rules:
+  - path: /Applications/Xcode.app
+    operations:
+    - read
+  - path: /Library/Preferences/com.apple.dt.Xcode.plist
+    operations:
+    - read
+  - path: /Library/Preferences/com.apple.security.systemidentities.plist
+    operations:
+    - read
+  - path: /dev/ptmx
+    operations:
+    - write
+  - path: /private/tmp/**
+  - path: /private/var/root/.CFUserTextEncoding
+    operations:
+    - read
+  - path: /private/var/run
+    operations:
+    - read
+  - path: /private/var/run/com.apple.security.cryptexd
+    operations:
+    - read
+  - path: /private/var/run/com.apple.security.cryptexd/mnt
+    operations:
+    - read
+  - path: /private/var/run/usbmuxd
+    operations:
+    - read
+  - path: /tmp/**
+  - path: ~/.swiftpm/*
+  - path: ~/Library/Audio
+    operations:
+    - read
+  - path: ~/Library/Audio/Plug-Ins
+    operations:
+    - read
+  - path: ~/Library/Caches/com.apple.dt.Xcode/**
+  - path: ~/Library/Developer/**
+  - path: ~/Library/HTTPStorages/com.apple.dt.xcodebuild/httpstorages.*
+    operations:
+    - write
+  - path: ~/Library/org.swift.swiftpm/**
+network:
+  rules:
+  - host: developer.apple.com
+    ports:
+    - 443
+exec:
+  rules:
+  - path: /Library/Developer/PrivateFrameworks/CoreSimulator.framework/**
+  - path: /System/Library/Frameworks/CoreServices.framework/**
+io_devices:
+  rules:
+  - class: AppleNVMeEANUC
+  - class: AppleParavirtDeviceUserClient
+  - class: IOSurfaceRootUserClient

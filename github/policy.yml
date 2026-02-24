@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://hub.ashell.dev/schemas/policy/v1.json
+
+schema_version: 1
+publish:
+  name: ash/github
+  version: 0.0.1
+  description: Policy for GitHub CLI and API access
+  authors:
+  - Ash Team <team@ashell.dev>
+  license: MIT
+dependencies:
+  ash/git: '0'
+files:
+  rules:
+  - path: /private/tmp/**
+  - path: /tmp/**
+  - path: ~/.config/gh/**
+network:
+  rules:
+  - host: github.com
+    ports:
+    - 22
+    - 443
+  - host: '**.github.com'
+    ports:
+    - 443
+  - host: '**.githubusercontent.com'
+    ports:
+    - 443
+exec:
+  rules:
+  - path: /opt/homebrew/**/bin/gh

@@ -1,0 +1,189 @@
+# yaml-language-server: $schema=https://hub.ashell.dev/schemas/policy/v1.json
+
+schema_version: 1
+publish:
+  name: ash/base-macos
+  version: 0.0.3
+  description: Base policy for macOS
+  authors:
+  - Ash <team@ashell.dev>
+  license: MIT
+files:
+  rules:
+  - path: /
+    operations:
+    - read
+  - path: /Applications
+    operations:
+    - read
+  - path: /Applications/Ash.app/Contents/Frameworks/AshShared.framework/Versions/A/AshShared
+    operations:
+    - read
+  - path: /Applications/Xcode.app/Contents/**
+    operations:
+    - read
+  - path: /Library
+    operations:
+    - read
+  - path: /Library/Apple/System/Library/PrivateFrameworks/**
+    operations:
+    - read
+  - path: /Library/Apple/System/Library/Receipts
+    operations:
+    - read
+  - path: /Library/Developer/**
+    operations:
+    - read
+  - path: /Library/Receipts
+    operations:
+    - read
+  - path: /Library/ScriptingAdditions
+    operations:
+    - read
+  - path: /System/**
+    operations:
+    - read
+  - path: /bin/**
+    operations:
+    - read
+  - path: /dev/**
+    operations:
+    - read
+  - path: /dev/dtracehelper
+    operations:
+    - write
+  - path: /dev/null
+  - path: /dev/tty*
+    operations:
+    - write
+  - path: /opt
+    operations:
+    - read
+  - path: /opt/homebrew/**
+    operations:
+    - read
+  - path: /opt/homebrew/var/homebrew/locks/**
+  - path: /private
+    operations:
+    - read
+  - path: /private/etc
+    operations:
+    - read
+  - path: /private/etc/**
+    operations:
+    - read
+  - path: /private/etc/services
+    operations:
+    - read
+    - write
+  - path: /private/tmp/**
+  - path: /private/var
+    operations:
+    - read
+  - path: /private/var/**
+    operations:
+    - read
+  - path: /private/var/db/**
+    operations:
+    - read
+  - path: /private/var/folders/**
+  - path: /private/var/tmp/**
+  - path: /sbin/**
+    operations:
+    - read
+  - path: /usr/**
+    operations:
+    - read
+  - path: /usr/bin/**
+    operations:
+    - read
+  - path: /usr/libexec/**
+    operations:
+    - read
+  - path: /usr/sbin/**
+    operations:
+    - read
+  - path: ~/.CFUserTextEncoding
+    operations:
+    - read
+  - path: ~/.zshenv
+    operations:
+    - read
+  - path: ~/Library
+    operations:
+    - read
+  - path: ~/Library/Application Support
+    operations:
+    - read
+  - path: ~/Library/Audio/Plug-Ins/Components
+    operations:
+    - read
+  - path: ~/Library/Caches/**
+  - path: ~/Library/Developer/CoreSimulator
+    operations:
+    - read
+  - path: ~/Library/Developer/DVTDownloads/Assets/MetalToolchain
+    operations:
+    - read
+  - path: ~/Library/Developer/Xcode/DerivedData/**
+  - path: ~/Library/Developer/Xcode/SDKToSimulatorIndexMapping.plist
+    operations:
+    - read
+  - path: ~/Library/Developer/Xcode/UserData/**
+  - path: ~/Library/Developer/Xcode/XcodeToMetalToolchainIndexMapping.plist
+    operations:
+    - read
+  - path: ~/Library/Input Methods
+    operations:
+    - read
+  - path: ~/Library/Keyboard Layouts
+    operations:
+    - read
+  - path: ~/Library/Logs/**
+    operations:
+    - read
+network:
+  rules:
+  - host: 127.0.0.1
+  - host: ::1
+  - host: hub.ashell.dev
+    ports:
+    - 443
+  - host: localhost
+exec:
+  rules:
+  - path: /Applications/Ash.app/Contents/MacOS/ash-cli
+    subcommand: test
+  - path: /Applications/Ash.app/Contents/MacOS/ash-cli
+    subcommand: ping
+  - path: /Applications/Xcode.app/Contents/**
+  - path: /bin/**
+  - path: /sbin/**
+  - path: /usr/bin/**
+  - path: /usr/libexec/**
+  - path: /usr/sbin/**
+environment:
+  rules:
+    allow:
+    - HOME
+    - HOMEBREW_CELLAR
+    - HOMEBREW_PREFIX
+    - HOMEBREW_REPOSITORY
+    - LANG
+    - LOGNAME
+    - OLDPWD
+    - PATH
+    - PWD
+    - SHELL
+    - SHLVL
+    - SSH_AUTH_SOCK
+    - TERM
+    - TERM_PROGRAM
+    - TERM_PROGRAM_VERSION
+    - TERM_SESSION_ID
+    - TMPDIR
+    - USER
+    - XPC_FLAGS
+    - XPC_SERVICE_NAME
+    - _
+    - __CFBundleIdentifier

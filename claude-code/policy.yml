@@ -1,0 +1,84 @@
+# yaml-language-server: $schema=https://hub.ashell.dev/schemas/policy/v1.json
+
+schema_version: 1
+publish:
+  name: ash/claude-code
+  version: 0.0.2
+  description: Policy for Claude Code AI assistant
+  authors:
+  - Ash Team <team@ashell.dev>
+  license: MIT
+files:
+  rules:
+  - path: ./.claude/**
+  - path: /Library/Keychains
+    operations:
+    - read
+  - path: /Library/Keychains/System.keychain
+    operations:
+    - read
+  - path: /Library/Preferences/Logging/com.apple.diagnosticd.filter.plist
+    operations:
+    - read
+  - path: /Library/Preferences/com.apple.networkd.plist
+    operations:
+    - read
+  - path: '~'
+    operations:
+    - read
+  - path: ~/.cache/claude/staging
+  - path: ~/.cargo/**
+  - path: ~/.claude.json
+  - path: ~/.claude.json.backup
+  - path: ~/.claude.json.backup.*
+  - path: ~/.claude.json.lock
+  - path: ~/.claude.json.tmp.*
+  - path: ~/.claude.lock
+  - path: ~/.claude/**
+  - path: ~/.local/share/claude/**
+  - path: ~/.local/state/claude/**
+  - path: ~/Library/Keychains/**
+network:
+  rules:
+  - host: 0.0.0.0
+    ports:
+    - 443
+  - host: 160.79.104.10
+    ports:
+    - 443
+  - host: 2607:6bc0::10
+    ports:
+    - 443
+  - host: '::'
+    ports:
+    - 443
+  - host: api.anthropic.com
+    ports:
+    - 443
+  - host: statsig.anthropic.com
+    ports:
+    - 443
+  - host: platform.claude.com
+    ports:
+    - 443
+  - host: http-intake.logs.us5.datadoghq.com
+    ports:
+    - 443
+  - host: storage.googleapis.com
+    ports:
+    - 443
+  - host: registry.npmjs.org
+    ports:
+    - 443
+  - host: api.segment.io
+    ports:
+    - 443
+exec:
+  rules:
+  - path: /opt/homebrew/Caskroom/claude-code/**/claude
+  - path: /private/var/run/mDNSResponder
+  - path: /private/var/run/syslog
+environment:
+  rules:
+    allow:
+    - ANTHROPIC_API_KEY

@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://hub.ashell.dev/schemas/policy/v1.json
+
+schema_version: 1
+dependencies:
+  base-macos: ^0
+files:
+  rules:
+  - path: ./**
+network:
+  rules: []
+exec:
+  rules: []
+io_devices:
+  rules: []

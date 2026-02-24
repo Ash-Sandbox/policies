@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://hub.ashell.dev/schemas/policy/v1.json
+
+schema_version: 1
+publish:
+  name: ash/gemini-cli
+  version: 0.0.1
+  description: Policy for Gemini CLI
+  authors:
+  - Ash Team <team@ashell.dev>
+  license: MIT
+files:
+  rules:
+  - path: /private/tmp/**
+  - path: ~/.config/google/**
+network:
+  rules:
+  - host: '**.google.com'
+  - host: '**.googleapis.com'
+  - host: generativelanguage.googleapis.com
+exec:
+  rules:
+  - path: node
+  - path: python
+  - path: python3

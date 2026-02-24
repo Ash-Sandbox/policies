@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://hub.ashell.dev/schemas/policy/v1.json
+
+schema_version: 1
+publish:
+  name: ash/openai-codex
+  version: 0.0.1
+  description: Policy for OpenAI Codex and ChatGPT
+  authors:
+  - Ash Team <team@ashell.dev>
+  license: MIT
+files:
+  rules:
+  - path: /private/tmp/**
+  - path: ~/.openai/**
+network:
+  rules:
+  - host: '**.openai.com'
+  - host: api.openai.com
+  - host: chat.openai.com
+exec:
+  rules:
+  - path: node
+  - path: python
+  - path: python3

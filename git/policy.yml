@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://hub.ashell.dev/schemas/policy/v1.json
+
+schema_version: 1
+publish:
+  name: ash/git
+  version: 0.0.1
+  description: Policy for Git version control
+  authors:
+  - Ash Team <team@ashell.dev>
+  license: MIT
+files:
+  rules:
+  - path: ~/.config/git/**
+    operations:
+    - read
+  - path: ~/.gitconfig
+    operations:
+    - read
+  - path: ~/.ssh/config
+    operations:
+    - read
+  - path: ~/.ssh/id_ed25519
+    operations:
+    - read
+  - path: ~/.ssh/id_ed25519.pub
+    operations:
+    - read
+  - path: ~/.ssh/known_hosts
+    operations:
+    - read
+  - path: ./.git/**
+exec:
+  rules:
+  - path: /usr/bin/git
