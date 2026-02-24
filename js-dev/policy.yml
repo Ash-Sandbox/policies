@@ -6,23 +6,22 @@ publish:
   version: 0.0.1
   description: Policy for Node.js development
   authors:
-    - Ash Team <team@ashell.dev>
+  - Ash Team <team@ashell.dev>
   license: MIT
 files:
   rules:
-    - path: /private/tmp/**
-    - path: /tmp/**
-    - path: ~/.npm/**
-    - path: ~/.nvm/**
+  - path: /private/tmp/**
+  - path: ~/.npm/**
+  - path: ~/.nvm/**
 network:
   rules:
-    - host: "**.npmjs.com"
-    - host: "**.npmjs.org"
-    - host: registry.npmjs.org
+  - host: '**.npmjs.com'
+  - host: '**.npmjs.org'
+  - host: registry.npmjs.org
 exec:
   rules:
-    - path: ./node_modules/@esbuild/**/esbuild
-    - path: ./node_modules/esbuild/**/esbuild
-    - path: /opt/homebrew/bin/node
-    - path: /opt/homebrew/bin/npm
-    - path: /opt/homebrew/bin/npx
+  - path: ./node_modules/@esbuild/**/esbuild
+  - path: ./node_modules/esbuild/**/esbuild
+  - path: /opt/homebrew/Cellar/node/25.6.1/bin/node
+  - path: /opt/homebrew/lib/node_modules/npm/bin/npm-cli.js
+  - path: /opt/homebrew/lib/node_modules/npm/bin/npx-cli.js

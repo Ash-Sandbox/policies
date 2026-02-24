@@ -13,7 +13,6 @@ dependencies:
 files:
   rules:
   - path: /private/tmp/**
-  - path: /tmp/**
   - path: ~/.config/gh/**
 network:
   rules:

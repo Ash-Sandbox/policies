@@ -10,6 +10,7 @@ publish:
   license: MIT
 files:
   rules:
+  - path: ./.git/**
   - path: ~/.config/git/**
     operations:
     - read
@@ -28,7 +29,6 @@ files:
   - path: ~/.ssh/known_hosts
     operations:
     - read
-  - path: ./.git/**
 exec:
   rules:
   - path: /usr/bin/git

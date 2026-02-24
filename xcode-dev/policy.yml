@@ -40,7 +40,6 @@ files:
   - path: /private/var/run/usbmuxd
     operations:
     - read
-  - path: /tmp/**
   - path: ~/.swiftpm/*
   - path: ~/Library/Audio
     operations:
