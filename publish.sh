@@ -46,7 +46,7 @@ for dir in */; do
     continue
   fi
 
-  # Parse published version (e.g. "base-macos v0.0.2" -> "0.0.2")
+  # Parse published version (e.g. "ash/base-macos v0.0.2" -> "0.0.2")
   published_version=$(echo "$info_output" | head -1 | awk '{print $2}' | sed 's/^v//')
 
   if [ "$local_version" = "$published_version" ]; then
