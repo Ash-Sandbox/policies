@@ -3,7 +3,7 @@
 schema_version: 1
 publish:
   name: ash/claude-code
-  version: 0.0.2
+  version: 0.0.3
   description: Policy for Claude Code AI assistant
   authors:
   - Ash Team <team@ashell.dev>
@@ -53,6 +53,9 @@ network:
     ports:
     - 443
   - host: api.anthropic.com
+    ports:
+    - 443
+  - host: mcp-proxy.anthropic.com
     ports:
     - 443
   - host: statsig.anthropic.com
