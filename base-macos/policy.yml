@@ -3,7 +3,7 @@
 schema_version: 1
 publish:
   name: ash/base-macos
-  version: 0.0.3
+  version: 0.0.4
   description: Base policy for macOS
   authors:
   - Ash <team@ashell.dev>
@@ -17,6 +17,9 @@ files:
     operations:
     - read
   - path: /Applications/Ash.app/Contents/Frameworks/AshShared.framework/Versions/A/AshShared
+    operations:
+    - read
+  - path: /Applications/Xcode.app
     operations:
     - read
   - path: /Applications/Xcode.app/Contents/**
