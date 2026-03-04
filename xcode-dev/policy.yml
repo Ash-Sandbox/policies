@@ -3,7 +3,7 @@
 schema_version: 1
 publish:
   name: ash/xcode-dev
-  version: 0.0.2
+  version: 0.0.3
   description: Policy for software development with Xcode
   authors:
   - Ash Team <team@ashell.dev>
@@ -15,6 +15,9 @@ files:
   - path: /Applications/Xcode.app
     operations:
     - read
+  - path: /Library/Apple
+    operations:
+    - read
   - path: /Library/Preferences/com.apple.dt.Xcode.plist
     operations:
     - read
@@ -24,6 +27,9 @@ files:
   - path: /dev/ptmx
     operations:
     - write
+  - path: /opt/X11
+    operations:
+    - read
   - path: /private/tmp/**
   - path: /private/var
     operations:
