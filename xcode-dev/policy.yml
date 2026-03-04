@@ -18,6 +18,12 @@ files:
   - path: /Library/Apple
     operations:
     - read
+  - path: /Library/Apple/usr
+    operations:
+    - read
+  - path: /Library/Apple/usr/bin
+    operations:
+    - read
   - path: /Library/Preferences/com.apple.dt.Xcode.plist
     operations:
     - read
@@ -28,6 +34,9 @@ files:
     operations:
     - write
   - path: /opt/X11
+    operations:
+    - read
+  - path: /opt/X11/bin
     operations:
     - read
   - path: /private/tmp/**
