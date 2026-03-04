@@ -3,7 +3,7 @@
 schema_version: 1
 publish:
   name: ash/xcode-dev
-  version: 0.0.3
+  version: 0.0.4
   description: Policy for software development with Xcode
   authors:
   - Ash Team <team@ashell.dev>
