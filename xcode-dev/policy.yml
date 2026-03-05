@@ -3,7 +3,7 @@
 schema_version: 1
 publish:
   name: ash/xcode-dev
-  version: 0.0.7
+  version: 0.0.8
   description: Policy for software development with Xcode
   authors:
   - Ash Team <team@ashell.dev>
@@ -86,6 +86,8 @@ network:
     ports:
     - 443
   - host: fe80::/10
+    ports:
+    - 62078
   - host: swift.org
     ports:
     - 443
