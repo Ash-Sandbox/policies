@@ -3,7 +3,7 @@
 schema_version: 1
 publish:
   name: ash/base-macos
-  version: 0.0.4
+  version: 0.0.5
   description: Base policy for macOS
   authors:
   - Ash <team@ashell.dev>
@@ -160,6 +160,7 @@ exec:
   - path: /Applications/Ash.app/Contents/MacOS/ash-cli
     subcommand: ping
   - path: /Applications/Xcode.app/Contents/**
+  - path: /Library/Developer/CommandLineTools/usr/bin/**
   - path: /bin/**
   - path: /sbin/**
   - path: /usr/bin/**
