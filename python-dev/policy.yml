@@ -3,7 +3,7 @@
 schema_version: 1
 publish:
   name: ash/python-dev
-  version: 0.0.5
+  version: 0.0.6
   description: Policy for Python development
   authors:
   - Ash Team <team@ashell.dev>
@@ -33,6 +33,15 @@ files:
   - path: ~/Library/Python/**
 network:
   rules:
+  - host: releases.astral.sh
+    ports:
+    - 443
+  - host: raw.githubusercontent.com
+    ports:
+    - 443
+  - host: release-assets.githubusercontent.com
+    ports:
+    - 443
   - host: '**.pypi.org'
     ports:
     - 443
