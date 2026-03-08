@@ -3,7 +3,7 @@
 schema_version: 1
 publish:
   name: ash/python-dev
-  version: 0.0.6
+  version: 0.0.7
   description: Policy for Python development
   authors:
   - Ash Team <team@ashell.dev>
@@ -54,5 +54,6 @@ network:
 exec:
   rules:
   - path: ./.venv/bin/ruff
+  - path: /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/**
   - path: /opt/homebrew/Cellar/uv/*/bin/uv
   - path: ~/.local/share/uv/python/**
