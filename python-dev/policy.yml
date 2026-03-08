@@ -3,7 +3,7 @@
 schema_version: 1
 publish:
   name: ash/python-dev
-  version: 0.0.4
+  version: 0.0.5
   description: Policy for Python development
   authors:
   - Ash Team <team@ashell.dev>
@@ -25,10 +25,9 @@ files:
   - path: ~/.local
     operations:
     - read
+    - create
   - path: ~/.local/lib/python*/**
   - path: ~/.local/share
-    operations:
-    - read
   - path: ~/.local/share/uv/**
   - path: ~/.venv/**
   - path: ~/Library/Python/**
