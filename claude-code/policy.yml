@@ -3,7 +3,7 @@
 schema_version: 1
 publish:
   name: ash/claude-code
-  version: 0.0.5
+  version: 0.0.6
   description: Policy for Claude Code AI assistant
   authors:
   - Ash Team <team@ashell.dev>
@@ -11,6 +11,15 @@ publish:
 files:
   rules:
   - path: ./.claude/**
+  - path: /
+    operations:
+    - read
+  - path: /Applications/Xcode.app/Contents/Developer/**
+    operations:
+    - read
+  - path: /Library
+    operations:
+    - read
   - path: /Library/Keychains
     operations:
     - read
@@ -23,13 +32,139 @@ files:
   - path: /Library/Preferences/com.apple.networkd.plist
     operations:
     - read
+  - path: /System
+    operations:
+    - read
+  - path: /System/Library
+    operations:
+    - read
+  - path: /System/Library/CoreServices/RawCamera.bundle
+    operations:
+    - read
+  - path: /System/Library/CoreServices/SystemVersion.plist
+    operations:
+    - read
+  - path: /System/Library/Frameworks
+    operations:
+    - read
+  - path: /System/Library/Frameworks/Security.framework
+    operations:
+    - read
+  - path: /System/Library/Frameworks/Security.framework/Versions/**
+    operations:
+    - read
+  - path: /System/Volumes/Data
+    operations:
+    - read
+  - path: /System/Volumes/Preboot/**
+    operations:
+    - read
   - path: /Users
+    operations:
+    - read
+  - path: /bin
+    operations:
+    - read
+  - path: /bin/bash
+    operations:
+    - read
+  - path: /bin/ps
+    operations:
+    - read
+  - path: /bin/sh
+    operations:
+    - read
+  - path: /dev
+    operations:
+    - read
+  - path: /dev/autofs_nowait
+    operations:
+    - read
+  - path: /dev/dtracehelper
+    operations:
+    - write
+  - path: /dev/null
+    operations:
+    - read
+    - write
+  - path: /dev/tty
+    operations:
+    - write
+  - path: /dev/ttys014
+    operations:
+    - read
+  - path: /opt
+    operations:
+    - read
+  - path: /opt/homebrew
+    operations:
+    - read
+  - path: /opt/homebrew/Caskroom
+    operations:
+    - read
+  - path: /opt/homebrew/bin
     operations:
     - read
   - path: /private/etc
     operations:
     - read
+  - path: /private/etc/ssl/cert.pem
+    operations:
+    - read
+  - path: /private/tmp
+    operations:
+    - read
+  - path: /private/tmp/.99aedbef1fdb7edb-00000000.node
+    operations:
+    - read
+    - create
+    - delete
+  - path: /private/var/db/mds/messages/501/se_SecurityMessages
+    operations:
+    - read
+  - path: /private/var/db/timezone/**
+    operations:
+    - read
+  - path: /private/var/folders/lz/jby64bjj69z_mwv96l9wz6c00000gn/T/xcrun_db
+    operations:
+    - read
+  - path: /usr/bin
+    operations:
+    - read
+  - path: /usr/bin/clang
+    operations:
+    - read
+  - path: /usr/bin/git
+    operations:
+    - read
+  - path: /usr/bin/grep
+    operations:
+    - read
+  - path: /usr/bin/security
+    operations:
+    - read
+  - path: /usr/lib/dyld
+    operations:
+    - read
+  - path: /usr/share/i18n/esdb/UTF/UTF-8-MAC.esdb
+    operations:
+    - read
+  - path: /usr/share/i18n/esdb/UTF/UTF-8.esdb
+    operations:
+    - read
+  - path: /usr/share/i18n/esdb/esdb.alias.db
+    operations:
+    - read
+  - path: /usr/share/i18n/esdb/esdb.dir.db
+    operations:
+    - read
+  - path: /usr/share/icu/icudt78l.dat
+    operations:
+    - read
   - path: '~'
+    operations:
+    - read
+  - path: ~/.CFUserTextEncoding
     operations:
     - read
   - path: ~/.cache/claude/staging
@@ -41,18 +176,54 @@ files:
   - path: ~/.claude.json.tmp.*
   - path: ~/.claude.lock
   - path: ~/.claude/**
+  - path: ~/.config/git/ignore
+    operations:
+    - read
+  - path: ~/.gitconfig
+    operations:
+    - read
   - path: ~/.local/share/claude/**
   - path: ~/.local/state/claude/**
+  - path: ~/Library
+    operations:
+    - read
+  - path: ~/Library/Application Support/Arc/User Data
+    operations:
+    - read
+  - path: ~/Library/Application Support/BraveSoftware/Brave-Browser
+    operations:
+    - read
+  - path: ~/Library/Application Support/Chromium
+    operations:
+    - read
+  - path: ~/Library/Application Support/Google/Chrome
+    operations:
+    - read
+  - path: ~/Library/Application Support/Microsoft Edge
+    operations:
+    - read
+  - path: ~/Library/Application Support/Vivaldi
+    operations:
+    - read
+  - path: ~/Library/Application Support/com.operasoftware.Opera
+    operations:
+    - read
   - path: ~/Library/Keychains/**
+  - path: ~/Projects
+    operations:
+    - read
+  - path: ~/Projects/.gitignore
+    operations:
+    - read
+  - path: ~/Projects/policies/**
+    operations:
+    - read
+  - path: ~/Projects/policies/.git/**
+    operations:
+    - read
 network:
   rules:
   - host: 0.0.0.0
-    ports:
-    - 443
-  - host: 160.79.104.10
-    ports:
-    - 443
-  - host: 2607:6bc0::10
     ports:
     - 443
   - host: '::'
@@ -65,6 +236,9 @@ network:
     ports:
     - 443
   - host: statsig.anthropic.com
+    ports:
+    - 443
+  - host: formulae.brew.sh
     ports:
     - 443
   - host: platform.claude.com
@@ -84,9 +258,17 @@ network:
     - 443
 exec:
   rules:
+  - path: /Applications/Xcode.app/Contents/Developer/usr/bin/git
+  - path: /bin/bash
+  - path: /bin/ps
+  - path: /bin/sh
   - path: /opt/homebrew/Caskroom/claude-code/**/claude
   - path: /private/var/run/mDNSResponder
   - path: /private/var/run/syslog
+  - path: /usr/bin/clang
+  - path: /usr/bin/git
+  - path: /usr/bin/grep
+  - path: /usr/bin/security
 environment:
   rules:
     allow:
