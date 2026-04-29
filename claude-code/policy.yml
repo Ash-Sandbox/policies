@@ -3,13 +3,16 @@
 schema_version: 1
 publish:
   name: ash/claude-code
-  version: 0.0.6
+  version: 0.0.7
   description: Policy for Claude Code AI assistant
   authors:
   - Ash Team <team@ashell.dev>
   license: MIT
 files:
   rules:
+  - path: ./**
+    operations:
+    - read
   - path: ./.claude/**
   - path: /
     operations:
@@ -111,10 +114,7 @@ files:
   - path: /private/etc/ssl/cert.pem
     operations:
     - read
-  - path: /private/tmp
-    operations:
-    - read
-  - path: /private/tmp/.99aedbef1fdb7edb-00000000.node
+  - path: /private/tmp/**
     operations:
     - read
     - create
@@ -125,7 +125,7 @@ files:
   - path: /private/var/db/timezone/**
     operations:
     - read
-  - path: /private/var/folders/lz/jby64bjj69z_mwv96l9wz6c00000gn/T/xcrun_db
+  - path: /private/var/folders/**
     operations:
     - read
   - path: /usr/bin
@@ -146,16 +146,7 @@ files:
   - path: /usr/lib/dyld
     operations:
     - read
-  - path: /usr/share/i18n/esdb/UTF/UTF-8-MAC.esdb
-    operations:
-    - read
-  - path: /usr/share/i18n/esdb/UTF/UTF-8.esdb
-    operations:
-    - read
-  - path: /usr/share/i18n/esdb/esdb.alias.db
-    operations:
-    - read
-  - path: /usr/share/i18n/esdb/esdb.dir.db
+  - path: /usr/share/i18n/**
     operations:
     - read
   - path: /usr/share/icu/icudt78l.dat
@@ -213,12 +204,6 @@ files:
     operations:
     - read
   - path: ~/Projects/.gitignore
-    operations:
-    - read
-  - path: ~/Projects/policies/**
-    operations:
-    - read
-  - path: ~/Projects/policies/.git/**
     operations:
     - read
 network:
