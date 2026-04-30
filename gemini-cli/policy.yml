@@ -3,14 +3,56 @@
 schema_version: 1
 publish:
   name: ash/gemini-cli
-  version: 0.0.1
+  version: 0.0.3
   description: Policy for Gemini CLI
   authors:
   - Ash Team <team@ashell.dev>
   license: MIT
 files:
   rules:
+  - path: ./**
+    operations:
+    - read
+  - path: /
+    operations:
+    - read
+  - path: /System/Volumes/Data
+    operations:
+    - read
+  - path: /System/Volumes/Preboot/**
+    operations:
+    - read
+  - path: /dev
+    operations:
+    - read
+  - path: /dev/dtracehelper
+    operations:
+    - write
+  - path: /dev/null
+    operations:
+    - read
+  - path: /dev/ttys022
+    operations:
+    - write
+  - path: /opt
+    operations:
+    - read
+  - path: /opt/homebrew/**
+    operations:
+    - read
   - path: /private/tmp/**
+  - path: /private/var/run/syslog
+    operations:
+    - read
+  - path: /usr/bin
+    operations:
+    - read
+  - path: /usr/bin/env
+    operations:
+    - read
+  - path: /usr/lib/dyld
+    operations:
+    - read
   - path: ~/.config/google/**
 network:
   rules:
@@ -19,6 +61,8 @@ network:
   - host: generativelanguage.googleapis.com
 exec:
   rules:
+  - path: /usr/bin/env
+    subcommand: node
   - path: node
   - path: python
   - path: python3
