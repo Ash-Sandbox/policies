@@ -3,7 +3,7 @@
 schema_version: 1
 publish:
   name: ash/claude-code
-  version: 0.0.7
+  version: 0.0.8
   description: Policy for Claude Code AI assistant
   authors:
   - Ash Team <team@ashell.dev>
@@ -44,6 +44,15 @@ files:
   - path: /System/Library/CoreServices/RawCamera.bundle
     operations:
     - read
+  - path: /System/Library/CoreServices/SystemVersion.bundle
+    operations:
+    - read
+  - path: /System/Library/CoreServices/SystemVersion.bundle/English.lproj
+    operations:
+    - read
+  - path: /System/Library/CoreServices/SystemVersion.bundle/English.lproj/SystemVersion.strings
+    operations:
+    - read
   - path: /System/Library/CoreServices/SystemVersion.plist
     operations:
     - read
@@ -54,6 +63,9 @@ files:
     operations:
     - read
   - path: /System/Library/Frameworks/Security.framework/Versions/**
+    operations:
+    - read
+  - path: /System/Library/Keychains/SystemTrustSettings.plist
     operations:
     - read
   - path: /System/Volumes/Data
@@ -71,10 +83,16 @@ files:
   - path: /bin/bash
     operations:
     - read
+  - path: /bin/cat
+    operations:
+    - read
   - path: /bin/ps
     operations:
     - read
   - path: /bin/sh
+    operations:
+    - read
+  - path: /bin/zsh
     operations:
     - read
   - path: /dev
@@ -86,14 +104,24 @@ files:
   - path: /dev/dtracehelper
     operations:
     - write
+  - path: /dev/fd/63
+    operations:
+    - read
   - path: /dev/null
     operations:
     - read
     - write
   - path: /dev/tty
     operations:
+    - read
     - write
   - path: /dev/ttys014
+    operations:
+    - read
+  - path: /dev/ttys018
+    operations:
+    - read
+  - path: /dev/ttys020
     operations:
     - read
   - path: /opt
@@ -105,13 +133,46 @@ files:
   - path: /opt/homebrew/Caskroom
     operations:
     - read
+  - path: /opt/homebrew/Library/Homebrew/brew.sh
+    operations:
+    - read
+  - path: /opt/homebrew/Library/Homebrew/cmd/shellenv.sh
+    operations:
+    - read
   - path: /opt/homebrew/bin
+    operations:
+    - read
+  - path: /opt/homebrew/bin/brew
+    operations:
+    - read
+  - path: /opt/homebrew/etc/paths
     operations:
     - read
   - path: /private/etc
     operations:
     - read
+  - path: /private/etc/paths
+    operations:
+    - read
+  - path: /private/etc/paths.d
+    operations:
+    - read
+  - path: /private/etc/paths.d/10-cryptex
+    operations:
+    - read
+  - path: /private/etc/paths.d/10-pmk-global
+    operations:
+    - read
+  - path: /private/etc/paths.d/100-rvictl
+    operations:
+    - read
+  - path: /private/etc/paths.d/40-XQuartz
+    operations:
+    - read
   - path: /private/etc/ssl/cert.pem
+    operations:
+    - read
+  - path: /private/etc/zprofile
     operations:
     - read
   - path: /private/tmp/**
@@ -131,7 +192,13 @@ files:
   - path: /usr/bin
     operations:
     - read
+  - path: /usr/bin/caffeinate
+    operations:
+    - read
   - path: /usr/bin/clang
+    operations:
+    - read
+  - path: /usr/bin/env
     operations:
     - read
   - path: /usr/bin/git
@@ -143,13 +210,25 @@ files:
   - path: /usr/bin/security
     operations:
     - read
+  - path: /usr/bin/sw_vers
+    operations:
+    - read
   - path: /usr/lib/dyld
+    operations:
+    - read
+  - path: /usr/libexec
+    operations:
+    - read
+  - path: /usr/libexec/path_helper
     operations:
     - read
   - path: /usr/share/i18n/**
     operations:
     - read
   - path: /usr/share/icu/icudt78l.dat
+    operations:
+    - read
+  - path: /usr/share/locale/C.UTF-8/LC_CTYPE
     operations:
     - read
   - path: '~'
@@ -175,6 +254,9 @@ files:
     - read
   - path: ~/.local/share/claude/**
   - path: ~/.local/state/claude/**
+  - path: ~/.zprofile
+    operations:
+    - read
   - path: ~/Library
     operations:
     - read
@@ -226,6 +308,9 @@ network:
   - host: formulae.brew.sh
     ports:
     - 443
+  - host: downloads.claude.ai
+    ports:
+    - 443
   - host: platform.claude.com
     ports:
     - 443
@@ -245,15 +330,21 @@ exec:
   rules:
   - path: /Applications/Xcode.app/Contents/Developer/usr/bin/git
   - path: /bin/bash
+  - path: /bin/cat
   - path: /bin/ps
   - path: /bin/sh
+  - path: /bin/zsh
   - path: /opt/homebrew/Caskroom/claude-code/**/claude
   - path: /private/var/run/mDNSResponder
   - path: /private/var/run/syslog
+  - path: /usr/bin/caffeinate
   - path: /usr/bin/clang
+  - path: /usr/bin/env
   - path: /usr/bin/git
   - path: /usr/bin/grep
   - path: /usr/bin/security
+  - path: /usr/bin/sw_vers
+  - path: /usr/libexec/path_helper
 environment:
   rules:
     allow:
