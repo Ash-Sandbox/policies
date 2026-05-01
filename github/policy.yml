@@ -3,7 +3,7 @@
 schema_version: 1
 publish:
   name: ash/github
-  version: 0.0.1
+  version: 0.0.2
   description: Policy for GitHub CLI and API access
   authors:
   - Ash Team <team@ashell.dev>
@@ -13,6 +13,7 @@ dependencies:
 files:
   rules:
   - path: /private/tmp/**
+  - path: ~/.cache/gh/**
   - path: ~/.config/gh/**
 network:
   rules:
