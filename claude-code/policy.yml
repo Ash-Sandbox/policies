@@ -3,7 +3,7 @@
 schema_version: 1
 publish:
   name: ash/claude-code
-  version: 0.0.9
+  version: 0.0.10
   description: Policy for Claude Code AI assistant
   authors:
   - Ash Team <team@ashell.dev>
@@ -257,7 +257,7 @@ files:
   - path: ~/.zprofile
     operations:
     - read
-  - path: ~/Applications/Claude Code URL Handler.app
+  - path: ~/Applications/Claude Code URL Handler.app/**
     operations:
     - read
   - path: ~/Library
