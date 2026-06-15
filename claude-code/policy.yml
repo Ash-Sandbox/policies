@@ -3,7 +3,7 @@
 schema_version: 1
 publish:
   name: ash/claude-code
-  version: 0.0.11
+  version: 0.0.12
   description: Policy for Claude Code AI assistant
   authors:
   - Ash Team <team@ashell.dev>
@@ -339,6 +339,7 @@ exec:
   - path: /bin/sh
   - path: /bin/zsh
   - path: /opt/homebrew/Caskroom/claude-code/**/claude
+  - path: /opt/homebrew/Caskroom/claude-code@latest/*/claude
   - path: /private/var/run/mDNSResponder
   - path: /private/var/run/syslog
   - path: /usr/bin/caffeinate
